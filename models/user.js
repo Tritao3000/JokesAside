@@ -1,4 +1,4 @@
-import { Schema, model, models } from "mongoose";
+import mongoose, { Schema, model, models } from "mongoose";
 
 const userSchema = new Schema({
   email: {
@@ -17,6 +17,12 @@ const userSchema = new Schema({
   image: {
     type: String,
   },
+  likedPrompts: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Prompt",
+    },
+  ],
 });
 
 const User = models.User || model("User", userSchema);
