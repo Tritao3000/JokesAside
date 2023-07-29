@@ -53,7 +53,7 @@ export const PUT = async (request, { params }) => {
     }
 
     // Update the prompt with new data
-    existingPrompt.prompt.userLiked = userLiked;
+    existingPrompt.userLiked = userLiked;
 
     await existingPrompt.save();
 
