@@ -7,7 +7,6 @@ import Copy from "@public/assets/assets/images/copy1.svg";
 import Tick from "@public/assets/assets/images/tick.svg";
 import Heart from "@public/assets/assets/images/heart.svg";
 import HeartFull from "@public/assets/assets/images/heartFull.svg";
-import EditPrompt from "@app/update-prompt/page";
 
 const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
   const pathName = usePathname();
@@ -16,6 +15,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
 
   const [copied, setCopied] = useState("");
   const [liked, setLiked] = useState(post.userLiked.includes(session?.user.id));
+  const [numLikes, setNumLikes] = useState(post.userLiked.length);
 
   const handleCopy = () => {
     setCopied(post.prompt);
@@ -30,10 +30,14 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
       if (!liked) {
         updatedUserLiked = [...post.userLiked];
         updatedUserLiked.push(session?.user.id);
+
+        console.log(updatedUserLiked);
       } else {
-        updatedUserLiked = post.userLiked.filter(function (user) {
-          return user !== session?.user.id;
-        });
+        updatedUserLiked = post.userLiked.filter(
+          (user) => user !== session?.user.id
+        );
+
+        console.log(updatedUserLiked);
       }
 
       const response = await fetch(`/api/prompt/${post._id}`, {
@@ -43,6 +47,8 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
 
       if (response.ok) {
         setLiked(!liked);
+
+        setNumLikes(updatedUserLiked.length);
       } else {
         console.error("Failed to update like status.");
       }
@@ -110,7 +116,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
           #{post.tag}
         </p>
         <p className="font-inter inline-block text-xs text-slate-300">
-          {post.userLiked.length} Likes
+          {numLikes} Likes
         </p>
       </div>
 
