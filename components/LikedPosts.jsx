@@ -4,7 +4,6 @@ import { PromptCardList } from "./Feed";
 
 const LikedPosts = () => {
   const { data: session } = useSession();
-  const user = session?.user;
 
   const [posts, setPosts] = useState([]);
 
@@ -19,14 +18,16 @@ const LikedPosts = () => {
     fetchPosts();
   }, [posts]);
 
-  const likedPosts = posts.filter((post) => post.userLiked.includes(user.id));
+  const likedPosts = posts.filter((post) =>
+    post.userLiked.includes(session?.user.id)
+  );
 
   return (
-    <div>
+    <div className="mt-10">
       {likedPosts.length !== 0 ? (
         <PromptCardList data={likedPosts} />
       ) : (
-        <h1>No liked posts</h1>
+        <h1 className="desc">No liked posts</h1>
       )}
     </div>
   );

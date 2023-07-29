@@ -112,7 +112,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
           #{post.tag}
         </p>
         <p className="font-inter inline-block text-xs text-slate-300">
-          {numLikes} {numLikes === 1 ? "Like" : "Likes"}
+          {numLikes} {numLikes === 1 ? "Laugh" : "Laughs"}
         </p>
       </div>
 

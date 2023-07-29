@@ -59,7 +59,6 @@ const MyProfile = () => {
         handleEdit={handleEdit}
         handleDelete={handleDelete}
       />
-      <LikedPosts />
     </>
   );
 };
