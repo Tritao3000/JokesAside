@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
@@ -15,7 +15,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
   const { data: session } = useSession();
 
   const [copied, setCopied] = useState("");
-  const [liked, setLiked] = useState(post.userLiked.includes(session.user));
+  const [liked, setLiked] = useState(post.userLiked.includes(session?.user.id));
 
   const handleCopy = () => {
     setCopied(post.prompt);
@@ -29,10 +29,10 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
 
       if (!liked) {
         updatedUserLiked = [...post.userLiked];
-        updatedUserLiked.push(session.user);
+        updatedUserLiked.push(session?.user.id);
       } else {
         updatedUserLiked = post.userLiked.filter(function (user) {
-          return user !== session.user;
+          return user !== session?.user.id;
         });
       }
 
@@ -86,6 +86,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
               src={copied === post.prompt ? Tick : Copy}
               width={12}
               height={12}
+              alt="copy"
             />
           </div>
           <div className="copy_btn mt-2" onClick={handleLike}>
@@ -93,6 +94,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
               src={liked === true ? HeartFull : Heart}
               width={12}
               height={12}
+              alt="like"
             />
           </div>
         </div>
