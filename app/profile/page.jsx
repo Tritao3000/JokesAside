@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import Profile from "@components/Profile";
 
 import React from "react";
+import LikedPosts from "@components/LikedPosts";
 
 const MyProfile = () => {
   const router = useRouter();
@@ -50,13 +51,16 @@ const MyProfile = () => {
   };
 
   return (
-    <Profile
-      name="My"
-      dsc="Welcome to your profile page"
-      data={posts}
-      handleEdit={handleEdit}
-      handleDelete={handleDelete}
-    />
+    <>
+      <Profile
+        name="My"
+        dsc="Welcome to your profile page"
+        data={posts}
+        handleEdit={handleEdit}
+        handleDelete={handleDelete}
+      />
+      <LikedPosts />
+    </>
   );
 };
 
