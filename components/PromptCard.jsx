@@ -30,14 +30,10 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
       if (!liked) {
         updatedUserLiked = [...post.userLiked];
         updatedUserLiked.push(session?.user.id);
-
-        console.log(updatedUserLiked);
       } else {
         updatedUserLiked = post.userLiked.filter(
           (user) => user !== session?.user.id
         );
-
-        console.log(updatedUserLiked);
       }
 
       const response = await fetch(`/api/prompt/${post._id}`, {
@@ -116,7 +112,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
           #{post.tag}
         </p>
         <p className="font-inter inline-block text-xs text-slate-300">
-          {numLikes} Likes
+          {numLikes} {numLikes === 1 ? "Like" : "Likes"}
         </p>
       </div>
 
