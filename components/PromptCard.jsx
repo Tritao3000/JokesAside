@@ -7,22 +7,48 @@ import Copy from "@public/assets/assets/images/copy1.svg";
 import Tick from "@public/assets/assets/images/tick.svg";
 import Heart from "@public/assets/assets/images/heart.svg";
 import HeartFull from "@public/assets/assets/images/heartFull.svg";
+import EditPrompt from "@app/update-prompt/page";
 
 const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
-  const [copied, setCopied] = useState("");
-  const [liked, setLiked] = useState(false);
-
   const pathName = usePathname();
   const router = useRouter();
   const { data: session } = useSession();
+
+  const [copied, setCopied] = useState("");
+  const [liked, setLiked] = useState(post.userLiked.includes(session.user));
 
   const handleCopy = () => {
     setCopied(post.prompt);
     navigator.clipboard.writeText(post.prompt);
     setTimeout(() => setCopied(""), 3000);
   };
-  const handleLike = () => {
-    liked === true ? setLiked(false) : setLiked(true);
+
+  const handleLike = async () => {
+    try {
+      let updatedUserLiked = [];
+
+      if (!liked) {
+        updatedUserLiked = [...post.userLiked];
+        updatedUserLiked.push(session.user);
+      } else {
+        updatedUserLiked = post.userLiked.filter(function (user) {
+          return user !== session.user;
+        });
+      }
+
+      const response = await fetch(`/api/prompt/${post._id}`, {
+        method: "PUT",
+        body: JSON.stringify({ userLiked: updatedUserLiked }),
+      });
+
+      if (response.ok) {
+        setLiked(!liked);
+      } else {
+        console.error("Failed to update like status.");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
   };
 
   const handleProfileClick = () => {
@@ -82,7 +108,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
           #{post.tag}
         </p>
         <p className="font-inter inline-block text-xs text-slate-300">
-          0 Likes
+          {post.userLiked.length} Likes
         </p>
       </div>
 
