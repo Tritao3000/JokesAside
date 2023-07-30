@@ -4,6 +4,18 @@ import { useState } from "react";
 
 const Profile = ({ name, dsc, data, handleEdit, handleDelete }) => {
   const [myOrLiked, setMyOrLiked] = useState(true);
+  const changeStylesToMyPosts = () => {
+    document.getElementById("myposts").classList.add("my-posts");
+    document.getElementById("myposts").classList.remove("liked-posts");
+    document.getElementById("likedposts").classList.add("liked-posts");
+    document.getElementById("likedposts").classList.remove("my-posts");
+  };
+  const changeStylesToLiked = () => {
+    document.getElementById("likedposts").classList.add("my-posts");
+    document.getElementById("likedposts").classList.remove("liked-posts");
+    document.getElementById("myposts").classList.add("liked-posts");
+    document.getElementById("myposts").classList.remove("my-posts");
+  };
   return (
     <section className="w-full">
       <h1 className="head_text text-left">
@@ -12,9 +24,11 @@ const Profile = ({ name, dsc, data, handleEdit, handleDelete }) => {
       <p className="desc text-left">{dsc}</p>
       <div className="mt-10 w-full flex justify-evenly items-center flex-row  ">
         <div
-          className="flex justify-center items-center basis-5/12 border-b hover:border-b-2 cursor-pointer "
+          id="myposts"
+          className="my-posts "
           onClick={() => {
             setMyOrLiked(true);
+            changeStylesToMyPosts();
           }}
         >
           <p className="my-1 text-base text-slate-300  max-w-2xl">
@@ -22,9 +36,11 @@ const Profile = ({ name, dsc, data, handleEdit, handleDelete }) => {
           </p>
         </div>
         <div
-          className="flex justify-center items-center basis-5/12 border-b hover:border-b-2 cursor-pointer  "
+          id="likedposts"
+          className="liked-posts"
           onClick={() => {
             setMyOrLiked(false);
+            changeStylesToLiked();
           }}
         >
           <p className="my-1 text-base text-slate-300 max-w-2xl">

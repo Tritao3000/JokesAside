@@ -176,3 +176,11 @@
 .flex-between {
   @apply flex justify-between items-center;
 }
+
+/* Profile extra */
+.my-posts {
+  @apply flex justify-center items-center basis-5/12 border-b-2 cursor-pointer;
+}
+.liked-posts {
+  @apply flex justify-center items-center basis-5/12 border-b hover:border-b-2 cursor-pointer;
+}
