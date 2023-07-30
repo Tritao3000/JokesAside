@@ -22,7 +22,7 @@ const Profile = ({ name, dsc, data, handleEdit, handleDelete }) => {
         <span className="title_gradient">{name} Profile</span>
       </h1>
       <p className="desc text-left">{dsc}</p>
-      <div className="mt-10 w-full flex justify-evenly items-center flex-row  ">
+      <div className="mt-10 w-full flex justify-between items-center flex-row  ">
         <div
           id="myposts"
           className="my-posts "
