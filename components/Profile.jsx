@@ -25,7 +25,7 @@ const Profile = ({ name, dsc, data, handleEdit, handleDelete }) => {
       <div className="mt-10 w-full flex justify-between items-center flex-row  ">
         <div
           id="myposts"
-          className="my-posts "
+          className="my-posts basis50"
           onClick={() => {
             setMyOrLiked(true);
             changeStylesToMyPosts();
@@ -37,7 +37,7 @@ const Profile = ({ name, dsc, data, handleEdit, handleDelete }) => {
         </div>
         <div
           id="likedposts"
-          className="liked-posts"
+          className="liked-posts basis50"
           onClick={() => {
             setMyOrLiked(false);
             changeStylesToLiked();
@@ -49,7 +49,7 @@ const Profile = ({ name, dsc, data, handleEdit, handleDelete }) => {
         </div>
       </div>
       {myOrLiked === true ? (
-        <div className="mt-10 prompt_layout">
+        <div className="mt-4 prompt_layout">
           {data.map((post) => {
             return (
               <PromptCard

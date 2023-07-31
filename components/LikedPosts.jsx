@@ -23,7 +23,7 @@ const LikedPosts = () => {
   );
 
   return (
-    <div className="mt-10">
+    <div className="mt-4">
       {likedPosts.length !== 0 ? (
         <PromptCardList data={likedPosts} />
       ) : (

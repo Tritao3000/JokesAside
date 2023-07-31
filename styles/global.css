@@ -179,8 +179,11 @@
 
 /* Profile extra */
 .my-posts {
-  @apply flex justify-center items-center basis-5/12 border-b-2 cursor-pointer;
+  @apply flex justify-center items-center  border-b-2 cursor-pointer;
 }
 .liked-posts {
-  @apply flex justify-center items-center basis-5/12 border-b hover:border-b-2 cursor-pointer;
+  @apply flex justify-center items-center  border-b hover:border-b-2 cursor-pointer;
+}
+.basis50 {
+  flex-basis: 48%;
 }
