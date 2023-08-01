@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import PromptCard from "./PromptCard";
+import Link from "next/link";
 
 export const PromptCardList = ({ data, handleTagClick }) => {
   return (
@@ -73,9 +74,16 @@ const Feed = () => {
           value={searchText}
           onChange={handleSearchChange}
           required
-          className="search_input peer mb-16"
+          className="search_input peer mb-4"
         ></input>
       </form>
+
+      <Link
+        href="/ranking"
+        className="border rounded-md w-full border-slate-300 bg-slate-300 py-1.5 px-5 text-gray-900 transition-all hover:bg-gray-900 hover:text-slate-300 text-center text-sm font-inter flex items-center justify-center"
+      >
+        Check Ranking
+      </Link>
 
       {searchText ? (
         <PromptCardList

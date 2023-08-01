@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 import Profile from "@components/Profile";
 
 import React from "react";
-import LikedPosts from "@components/LikedPosts";
 
 const MyProfile = () => {
   const router = useRouter();
@@ -15,7 +14,7 @@ const MyProfile = () => {
   const { data: session } = useSession();
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch(`/api/users/${session?.user.id}/posts`);
+      const response = await fetch(`/sers/${session?.user.id}/posts`);
       const data = await response.json();
 
       setPosts(data);
