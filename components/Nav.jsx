@@ -7,12 +7,18 @@ import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 import Logo from "@public/assets/assets/images/logo.png";
 import starDark from "@public/assets/assets/images/starDark.svg";
 import starLight from "@public/assets/assets/images/starLight.svg";
+import signInLight from "@public/assets/assets/images/signInLight.svg";
+import signInDark from "@public/assets/assets/images/signInDark.svg";
+import signOutLight from "@public/assets/assets/images/signOutLight.svg";
+import signOutDark from "@public/assets/assets/images/signOutDark.svg";
 
 const Nav = () => {
   const { data: session } = useSession();
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
   const [leader, setLeader] = useState(starLight);
+  const [signInIcon, setSignInIcon] = useState(signInDark);
+  const [signOutIcon, setSignOutIcon] = useState(signOutLight);
 
   useEffect(() => {
     const setUpProviders = async () => {
@@ -28,7 +34,7 @@ const Nav = () => {
       <Link href={"/"} className="flex gap-2 flex-center">
         <Image
           src={Logo}
-          alt="Promptopia logo"
+          alt="Jokes logo"
           width={30}
           height={30}
           className="object-contain"
@@ -49,15 +55,28 @@ const Nav = () => {
                 setLeader(starLight);
               }}
             >
-              <Image src={leader} width={25} height={25} alt="leaderboard" />
+              <Image src={leader} width={20} height={20} alt="leaderboard" />
             </Link>
 
             <Link href={"/create-prompt"} className="black_btn">
               Create Post
             </Link>
 
-            <button type="button" onClick={signOut} className="outline_btn">
-              Sign Out
+            <button
+              type="button"
+              onClick={() => {
+                signOut();
+                setSignInIcon(signInDark);
+              }}
+              className="outline_btn"
+              onMouseOver={() => {
+                setSignOutIcon(signOutDark);
+              }}
+              onMouseOut={() => {
+                setSignOutIcon(signOutLight);
+              }}
+            >
+              <Image src={signOutIcon} width={20} height={20} alt="SignOut" />
             </button>
 
             <Link href={"/profile"}>
@@ -77,10 +96,18 @@ const Nav = () => {
                 <button
                   type="button"
                   key={provider.name}
-                  onClick={() => signIn(provider.id)}
+                  onClick={() => {
+                    signIn(provider.id);
+                  }}
                   className="black_btn"
+                  onMouseOver={() => {
+                    setSignInIcon(signInLight);
+                  }}
+                  onMouseOut={() => {
+                    setSignInIcon(signInDark);
+                  }}
                 >
-                  Sign In
+                  <Image src={signInIcon} width={20} height={20} alt="SignIn" />
                 </button>
               ))}
           </>
@@ -120,7 +147,7 @@ const Nav = () => {
                   className="dropdown_link"
                   onClick={() => setToggleDropdown(false)}
                 >
-                  Create Prompt
+                  Create Post
                 </Link>
                 <button
                   type="button"
@@ -130,7 +157,12 @@ const Nav = () => {
                   }}
                   className="mt-3 w-full black_btn"
                 >
-                  Sign Out
+                  <Image
+                    src={signOutDark}
+                    width={20}
+                    height={20}
+                    alt="SignOut"
+                  />
                 </button>
               </div>
             )}
@@ -145,7 +177,7 @@ const Nav = () => {
                   onClick={() => signIn(provider.id)}
                   className="black_btn"
                 >
-                  Sign In
+                  <Image src={signInDark} width={20} height={20} alt="SignIn" />
                 </button>
               ))}
           </>

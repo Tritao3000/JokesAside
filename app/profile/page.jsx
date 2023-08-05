@@ -53,7 +53,7 @@ const MyProfile = () => {
     <>
       <Profile
         name="My"
-        dsc="Welcome to your profile page"
+        dsc="Welcome to your profile page. Here you can check on your masterpiece."
         data={posts}
         handleEdit={handleEdit}
         handleDelete={handleDelete}

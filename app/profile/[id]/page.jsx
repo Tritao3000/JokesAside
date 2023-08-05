@@ -25,7 +25,7 @@ const UserProfile = ({ params }) => {
   return (
     <Profile
       name={userName}
-      dsc={`Welcome to ${userName}'s personalized profile page. Explore ${userName}'s exceptional prompts and be inspired by the power of their imagination`}
+      dsc={`Take a look and explore ${userName}'s jokes. Just don't laugh too hard, it would be awkward.`}
       data={userPosts}
     />
   );

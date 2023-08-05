@@ -4,13 +4,13 @@ const Home = () => {
   return (
     <section className="w-full flex-center flex-col">
       <h1 className="head_text text-center">
-        Discover & Share
+        Laugh & Share
         <br className="max-md:hidden" />
-        <span className="title_gradient text-center">AI-Powered Prompts</span>
+        <span className="title_gradient text-center">Homemade Wisecracks</span>
       </h1>
       <p className="desc text-center">
-        Promptopia is an open-source AI prompting tool for modern world to
-        discover, create and share usefull prompts
+        Jokes Aside is an open-source joke sharing hub where everyone can share
+        their uncle's last christmas jokes and more, of course.
       </p>
 
       <Feed />
