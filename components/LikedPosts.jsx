@@ -1,9 +1,11 @@
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { PromptCardList } from "./Feed";
+import { useParams } from "next/navigation";
 
 const LikedPosts = () => {
   const { data: session } = useSession();
+  const params = useParams();
 
   const [posts, setPosts] = useState([]);
 
@@ -16,11 +18,11 @@ const LikedPosts = () => {
     };
 
     fetchPosts();
-  }, [posts]);
+  }, []);
 
-  const likedPosts = posts.filter((post) =>
-    post.userLiked.includes(session?.user.id)
-  );
+  const userId = Object.keys(params).length !== 0 ? params.id : session.user.id;
+
+  const likedPosts = posts.filter((post) => post.userLiked.includes(userId));
 
   return (
     <div className="mt-4">
