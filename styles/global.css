@@ -164,6 +164,24 @@
 .basis50 {
   flex-basis: 48%;
 }
+/* Ranking Card */
+.rank_card {
+  @apply flex-1 break-inside-avoid rounded-xl border border-slate-300 bg-slate-300/10 bg-clip-padding p-0 pb-4 backdrop-blur-lg backdrop-filter md:w-[300px] w-full h-fit;
+}
+.gold {
+  background: linear-gradient(
+    to bottom,
+    #cfc09f 22%,
+    #634f2c 24%,
+    #cfc09f 26%,
+    #cfc09f 27%,
+    #ffecb3 40%,
+    #3a2c0f 78%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #fff;
+}
 @layer base {
   :root {
     --background: 0 0% 100%;

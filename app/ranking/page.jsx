@@ -3,13 +3,57 @@ import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import RankingCard from "@components/RankingCard";
 
 const Ranking = () => {
   const [posts, setPosts] = useState([]);
   const router = useRouter();
   const { data: session } = useSession();
 
+  const handleTagClick = (tagName) => {
+    setSearchText(tagName);
+
+    const searchResult = filterPrompts(tagName);
+    setSearchedResults(searchResult);
+  };
+
+  const handleCopy = () => {
+    setCopied(post.prompt);
+    navigator.clipboard.writeText(post.prompt);
+    setTimeout(() => setCopied(""), 3000);
+  };
+
+  const handleLike = async () => {
+    try {
+      let updatedUserLiked = [];
+
+      if (!liked) {
+        updatedUserLiked = [...post.userLiked];
+        updatedUserLiked.push(session?.user.id);
+      } else {
+        updatedUserLiked = post.userLiked.filter(
+          (user) => user !== session?.user.id
+        );
+      }
+
+      const response = await fetch(`/api/prompt/${post._id}`, {
+        method: "PUT",
+        body: JSON.stringify({ userLiked: updatedUserLiked }),
+      });
+
+      if (response.ok) {
+        setLiked(!liked);
+
+        setNumLikes(updatedUserLiked.length);
+      } else {
+        console.error("Failed to update like status.");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  };
   const handleProfileClick = (post) => {
+    // ! código repetido
     if (post.creator._id === session?.user.id) {
       router.push("/profile");
     } else {
@@ -33,7 +77,7 @@ const Ranking = () => {
   );
 
   return (
-    <div className="mt-10 w-full max-w-2xl flex flex-col gap-7 border border-slate-300  p-6 rounded-xl bg-slate-300/10">
+    /*<div className="mt-10 w-full max-w-2xl flex flex-col gap-7 border border-slate-300  p-6 rounded-xl bg-slate-300/10">
       {rankedPosts.map((post, index) => (
         <div
           key={index}
@@ -63,7 +107,14 @@ const Ranking = () => {
           </div>
         </div>
       ))}
-    </div>
+    </div>*/
+    <RankingCard
+      handleCopy={handleCopy}
+      handleProfileClick={handleProfileClick}
+      handleLike={handleLike}
+      handleTagClick={handleTagClick}
+      //post={post}
+    />
   );
 };
 
