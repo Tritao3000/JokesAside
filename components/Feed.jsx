@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export const PromptCardList = ({ data, handleTagClick }) => {
   return (
-    <div className="mt-0 prompt_layout">
+    <div className="mt-0 prompt_layout_rank">
       {data.map((post) => {
         return (
           <PromptCard
@@ -67,7 +67,7 @@ const Feed = () => {
   };
   return (
     <section className="feed">
-      <form className="relative w-full flex-center">
+      <form className="relative w-full max-w-xl flex-center">
         <input
           type="text"
           placeholder="Search for a tag or username"
@@ -80,7 +80,7 @@ const Feed = () => {
 
       <Link
         href="/ranking"
-        className="border rounded-md w-full border-slate-300 bg-slate-300 py-1.5 px-5 text-gray-900 transition-all hover:bg-gray-900 hover:text-slate-300 text-center text-sm font-inter flex items-center justify-center"
+        className="border rounded-md w-full max-w-xl border-slate-300 bg-slate-300 py-1.5 px-5 text-gray-900 transition-all hover:bg-gray-900 hover:text-slate-300 text-center text-sm font-inter flex items-center justify-center"
       >
         Check Ranking
       </Link>

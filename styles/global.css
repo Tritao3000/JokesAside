@@ -119,7 +119,7 @@
 }
 /* Feed Component */
 .feed {
-  @apply mt-16 mx-auto w-full max-w-xl flex justify-center items-center flex-col gap-2;
+  @apply mt-16 mx-auto w-full  flex justify-center items-center flex-col gap-2;
 }
 /* Form Component */
 .form_textarea {
@@ -167,6 +167,12 @@
 /* Ranking Card */
 .rank_card {
   @apply flex-1 break-inside-avoid rounded-xl border border-slate-300 bg-slate-300/10 bg-clip-padding p-0 pb-4 backdrop-blur-lg backdrop-filter md:w-[300px] w-full h-fit;
+}
+.glassmorphism2 {
+  @apply rounded-t-xl border border-slate-300 bg-slate-300 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur;
+}
+.prompt_layout_rank {
+  @apply grid grid-cols-1 gap-y-6 py-8 sm:grid-cols-2 sm:gap-6 xl:grid-cols-3;
 }
 
 @layer base {

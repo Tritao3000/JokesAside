@@ -25,13 +25,15 @@ const LikedPosts = () => {
   const likedPosts = posts.filter((post) => post.userLiked.includes(userId));
 
   return (
-    <div className="mt-4">
-      {likedPosts.length !== 0 ? (
-        <PromptCardList data={likedPosts} />
-      ) : (
-        <h1 className="desc">No liked posts</h1>
-      )}
-    </div>
+    <>
+      <div className="mt-4">
+        {likedPosts.length !== 0 ? (
+          <PromptCardList data={likedPosts} />
+        ) : (
+          <h1 className="desc">No liked posts</h1>
+        )}
+      </div>
+    </>
   );
 };
 
