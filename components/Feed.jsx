@@ -3,22 +3,7 @@
 import { useEffect, useState } from "react";
 import PromptCard from "./PromptCard";
 import Link from "next/link";
-
-export const PromptCardList = ({ data, handleTagClick }) => {
-  return (
-    <div className="mt-0 prompt_layout_rank">
-      {data.map((post) => {
-        return (
-          <PromptCard
-            key={post._id}
-            post={post}
-            handleTagClick={handleTagClick}
-          />
-        );
-      })}
-    </div>
-  );
-};
+import PromptCardList from "./PromptCardList";
 
 const Feed = () => {
   const [searchText, setSearchText] = useState("");
