@@ -73,7 +73,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
             className="rounded-full object-contain"
           />
           <div className="flex flex-col">
-            <h3 className="font-satoshi font-semibold text-slate-300">
+            <h3 className="acme font-semibold text-slate-300">
               {post.creator.username}
             </h3>
 
@@ -104,7 +104,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
       <p className="my-4 font-satoshi text-sm text-slate-300">{post.prompt}</p>
       <div className="flex justify-between">
         <p
-          className="font-inter font-semibold inline-block text-sm tag_gradient cursor-pointer"
+          className="acme font-medium inline-block text-sm tag_gradient cursor-pointer"
           onClick={() => {
             handleTagClick && handleTagClick(post.tag);
           }}
@@ -119,13 +119,13 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
       {session?.user.id === post.creator._id && pathName === "/profile" && (
         <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
           <p
-            className="font-inter text-sm green_gradient cursor-pointer"
+            className="font-inter text-sm green_gradient cursor-pointer acme"
             onClick={handleEdit}
           >
             Edit
           </p>
           <p
-            className="font-inter text-sm orange_gradient cursor-pointer"
+            className="font-inter text-sm orange_gradient cursor-pointer acme"
             onClick={handleDelete}
           >
             Delete

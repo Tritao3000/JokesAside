@@ -9,6 +9,7 @@ import Heart from "@public/assets/assets/images/heart.svg";
 import HeartFull from "@public/assets/assets/images/heartFull.svg";
 
 const RankingCard = ({ post, index }) => {
+  console.log(post);
   const pathName = usePathname();
   const router = useRouter();
   const { data: session } = useSession();
@@ -69,12 +70,10 @@ const RankingCard = ({ post, index }) => {
       </div>
       <div className="w-full flex flex-col justify-start items-start px-6 ">
         <div className="my-5">
-          <p className="font-satoshi font-semibold tag_gradient text-5xl">
-            #{index + 1}
-          </p>
+          <p className="acme font-medium tag_gradient text-5xl">#{index + 1}</p>
         </div>
         <div className="mb-5">
-          <p className="font-inter text-slate-300 text-xs">author:</p>
+          <p className="text-slate-300 text-xs">author:</p>
           <div
             className="flex flex-row space-x-2 cursor-pointer mt-1"
             onClick={handleProfileClick}
@@ -86,14 +85,14 @@ const RankingCard = ({ post, index }) => {
               height={25}
               className="rounded-full object-contain"
             />
-            <p className="font-satoshi font-semibold text-slate-300">
+            <p className="acme font-medium text-slate-300">
               {post.creator.username}
             </p>
           </div>
         </div>
         <div className="mb-5">
-          <p className="font-inter text-slate-300 text-xs">tag:</p>
-          <p className="font-satoshi font-semibold inline-block text-md text-slate-300">
+          <p className=" text-slate-300 text-xs">tag:</p>
+          <p className="acme font-medium inline-block text-md text-slate-300">
             #{post.tag}
           </p>
         </div>

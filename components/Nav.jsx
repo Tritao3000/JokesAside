@@ -11,6 +11,7 @@ import signInLight from "@public/assets/assets/images/signInLight.svg";
 import signInDark from "@public/assets/assets/images/signInDark.svg";
 import signOutLight from "@public/assets/assets/images/signOutLight.svg";
 import signOutDark from "@public/assets/assets/images/signOutDark.svg";
+import { useRouter } from "next/navigation";
 
 const Nav = () => {
   const { data: session } = useSession();
@@ -28,6 +29,16 @@ const Nav = () => {
     };
     setUpProviders();
   }, []);
+  const router = useRouter();
+  const goToRoot = () => {
+    router.push("/");
+  };
+
+  useEffect(() => {
+    if (!session?.user) {
+      goToRoot();
+    }
+  }, [session]);
 
   return (
     <nav className="flex-between w-full mb-16 pt-3">
@@ -39,7 +50,7 @@ const Nav = () => {
           height={30}
           className="object-contain"
         />
-        <p className="logo_text">Jokes Aside</p>
+        <p className="logo_text acme">Jokes Aside</p>
       </Link>
       {/* desktop nav*/}
       <div className="sm:flex hidden">
@@ -58,7 +69,7 @@ const Nav = () => {
               <Image src={leader} width={20} height={20} alt="leaderboard" />
             </Link>
 
-            <Link href={"/create-prompt"} className="black_btn">
+            <Link href={"/create-prompt"} className="black_btn ">
               Create Post
             </Link>
 

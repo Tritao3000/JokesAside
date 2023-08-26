@@ -6,7 +6,9 @@ const Home = () => {
       <h1 className="head_text text-center">
         Laugh & Share
         <br className="max-md:hidden" />
-        <span className="title_gradient text-center">Homemade Wisecracks</span>
+        <span className="title_gradient text-center acme">
+          Homemade Wisecracks
+        </span>
       </h1>
       <p className="desc text-center">
         Jokes Aside is an open-source joke sharing hub where everyone can share

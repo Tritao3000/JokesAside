@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import RankingCard from "@components/RankingCard";
+import RankingCarousel from "@components/RankingCarousel";
 
 const Ranking = () => {
   const [posts, setPosts] = useState([]);
@@ -18,15 +19,15 @@ const Ranking = () => {
 
     fetchPosts();
   }, []);
+  console.log(posts);
 
   const rankedPosts = posts.sort(
     (a, b) => b.userLiked.length - a.userLiked.length
   );
-
   return (
     <section className="w-fit">
       <h1 className="head_text text-left">
-        <span className="title_gradient">Ranking</span>
+        <span className="title_gradient acme">Ranking</span>
       </h1>
       <p className="desc text-left">
         Check out the best jokes, obviously hand-crafted by those who never felt

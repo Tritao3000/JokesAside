@@ -1,9 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Acme&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+.lobster {
+  font-family: "Lobster", cursive;
+}
+.acme {
+  font-family: "Acme", sans-serif;
+}
 .main {
   width: 100vw;
   min-height: 100vh;
@@ -87,14 +95,14 @@
 }
 
 .title_gradient {
-  @apply bg-gradient-to-r from-pink-800 via-cyan-700 to-pink-800 bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-pink-700 via-cyan-600 to-pink-700 bg-clip-text text-transparent;
 }
 
 .title1_gradient {
-  @apply bg-gradient-to-r from-pink-800 via-cyan-700 to-pink-800;
+  @apply bg-gradient-to-r from-pink-700 via-cyan-600 to-pink-700;
 }
 .tag_gradient {
-  @apply bg-gradient-to-r from-pink-800 to-cyan-700 bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-pink-700 to-cyan-600 bg-clip-text text-transparent;
 }
 .green_gradient {
   @apply bg-gradient-to-r from-cyan-600 to-cyan-700 bg-clip-text text-transparent;
@@ -103,10 +111,10 @@
   @apply bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
 }
 .desc {
-  @apply mt-5 text-lg text-slate-300 sm:text-xl max-w-2xl;
+  @apply mt-5 text-lg text-slate-300 sm:text-lg max-w-2xl;
 }
 .search_input {
-  @apply block w-full rounded-md border border-slate-500 bg-slate-300 py-2.5  pl-5 pr-12 text-sm shadow-lg font-medium focus:border-gray-900 focus:outline-none focus:ring-0;
+  @apply block w-full rounded-md border text-gray-900 border-slate-500 bg-slate-300 py-2.5  pl-5 pr-12 text-sm shadow-lg font-medium focus:border-gray-900 focus:outline-none focus:ring-0;
 }
 .copy_btn {
   @apply w-7 h-7 rounded-full bg-gray-900 /* shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] */ backdrop-blur flex justify-center items-center cursor-pointer;

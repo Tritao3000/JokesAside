@@ -19,7 +19,7 @@ const Profile = ({ name, dsc, data, handleEdit, handleDelete }) => {
   return (
     <section className="w-full">
       <h1 className="head_text text-left">
-        <span className="title_gradient">{name} Profile</span>
+        <span className="title_gradient acme">{name} Profile</span>
       </h1>
       <p className="desc text-left">{dsc}</p>
       <div className="mt-10 w-full flex justify-between items-center flex-row  ">

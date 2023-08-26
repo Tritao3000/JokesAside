@@ -6,11 +6,17 @@ export const POST = async (req, res) => {
 
   try {
     await connectToDB();
+
+    if (!userId || !prompt || !tag) {
+      throw new Error("Missing or invalid data");
+    }
+
     const newPrompt = new Prompt({ creator: userId, prompt, tag });
 
     await newPrompt.save();
     return new Response(JSON.stringify(newPrompt), { status: 201 });
   } catch (error) {
+    console.error("Error:", error.message);
     return new Response("Failed to create a new post", { status: 500 });
   }
 };
